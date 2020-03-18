@@ -30,17 +30,7 @@ public class Main {
                 for (int y = 1; y < lifeArray[i].length - 1; y++) {
                     int neighbors = lifeArray[x - 1][y - 1] + lifeArray[x - 1][y] + lifeArray[x - 1][y + 1] + lifeArray[x][y - 1] +
                             lifeArray[x][y + 1] + lifeArray[x + 1][y - 1] + lifeArray[x + 1][y] + lifeArray[x + 1][y + 1];
-                    if (lifeArray[x][y] == 0 && neighbors == 3) {
-                        newGenerationArray[x][y] = 1;
-                    } else if (lifeArray[x][y] == 1 && neighbors == 2) {
-                        newGenerationArray[x][y] = 0;
-                    } else if (lifeArray[x][y] == 1 && neighbors < 2) {
-                        newGenerationArray[x][y] = 1;
-                    } else if (lifeArray[x][y] == 1 && neighbors == 3) {
-                        newGenerationArray[x][y] = 1;
-                    } else if (lifeArray[x][y] == 1 && neighbors > 3) {
-                        newGenerationArray[x][y] = 0;
-                    }
+                    calculateNextGeneration(lifeArray, newGenerationArray, x, y, neighbors);
                 }
 
             }
@@ -50,6 +40,20 @@ public class Main {
 
         }
 
+    }
+
+    private static void calculateNextGeneration(int[][] lifeArray, int[][] newGenerationArray, int x, int y, int neighbors) {
+        if (lifeArray[x][y] == 0 && neighbors == 3) {
+            newGenerationArray[x][y] = 1;
+        } else if (lifeArray[x][y] == 1 && neighbors == 2) {
+            newGenerationArray[x][y] = 0;
+        } else if (lifeArray[x][y] == 1 && neighbors < 2) {
+            newGenerationArray[x][y] = 1;
+        } else if (lifeArray[x][y] == 1 && neighbors == 3) {
+            newGenerationArray[x][y] = 1;
+        } else if (lifeArray[x][y] == 1 && neighbors > 3) {
+            newGenerationArray[x][y] = 0;
+        }
     }
 
     private static void copyArray(int[][] lifeArray, int[][] newGenerationArray) {
