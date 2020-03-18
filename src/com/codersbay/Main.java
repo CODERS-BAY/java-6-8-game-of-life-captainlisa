@@ -26,9 +26,7 @@ public class Main {
 
         for (int i = 0; i <= generations; i++) {
 
-            copyArray(lifeArray, newGenerationArray);
-
-            for (int x = 0; x < lifeArray.length - 1; x++) {
+            for (int x = 1; x < lifeArray.length - 1; x++) {
                 for (int y = 1; y < lifeArray[i].length - 1; y++) {
                     int neighbors = lifeArray[x - 1][y - 1] + lifeArray[x - 1][y] + lifeArray[x - 1][y + 1] + lifeArray[x][y - 1] +
                             lifeArray[x][y + 1] + lifeArray[x + 1][y - 1] + lifeArray[x + 1][y] + lifeArray[x + 1][y + 1];
@@ -47,6 +45,7 @@ public class Main {
 
             }
 
+            copyArray(lifeArray, newGenerationArray);
             printArray(newGenerationArray);
 
         }
@@ -72,7 +71,7 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 }
-
